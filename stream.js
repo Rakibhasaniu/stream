@@ -15,6 +15,11 @@ server.on("request", (req, res) => {
   readAble.on("end", () => {
     res.end();
   });
+  readAble.on("error", (err) => {
+    console.log(err);
+    res.statusCode = 6000;
+    res.end("This File Not Found.....");
+  });
 });
 
 server.listen(9000, "127.0.0.1", () => {
